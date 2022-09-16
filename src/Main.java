@@ -20,7 +20,7 @@ public class Main {
         people.add(new Person("Костя", "Булдинин-Прохопьев", 21));
         people.add(new Person("Татьяна", "Булкина", 41));
 
-        Collections.sort(people, new ComparatorForPerson(3));
+        Collections.sort(people, new ComparatorForPerson(2));
 
         for (Person person : people) {
             System.out.println(person);
@@ -45,10 +45,10 @@ class ComparatorForPerson implements Comparator<Person> {
      */
     @Override
     public int compare(Person o1, Person o2) {
-
         String[] wordsInSurname1 = o1.getSurname().split("-");
         String[] wordsInSurname2 = o2.getSurname().split("-");
-        if ((wordsInSurname1.length & wordsInSurname2.length) >= maxLenghtOfSurname) {
+        if (wordsInSurname1.length > maxLenghtOfSurname
+            && wordsInSurname2.length > maxLenghtOfSurname) {
             return Integer.compare(o1.getAge(), o2.getAge());
         }
         if (wordsInSurname1.length > wordsInSurname2.length) {
