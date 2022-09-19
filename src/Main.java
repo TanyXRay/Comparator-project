@@ -9,14 +9,13 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-
         List<Person> people = new ArrayList<>();
         people.add(new Person("Алексей", "Альбединский-Покровский", 26));
-        people.add(new Person("Юлия", "Белозерова-Востокова-Воскресенская", 23));
-        people.add(new Person("Александра", "Далевиднова-Непомнящих-Бушкевич", 17));
-        people.add(new Person("Дмитрий", "Донской-Златовласов-Казанцев-Сиванцев", 18));
+        people.add(new Person("Юлия", "Белозерова,Востокова,Воскресенская", 23));
+        people.add(new Person("Александра", "Далевиднова Непомнящих Бушкевич", 17));
+        people.add(new Person("Дмитрий", "Донской,Златовласов,Казанцев,Сиванцев", 18));
         people.add(new Person("Сергей", "Калинин", 42));
-        people.add(new Person("Артем", "Чуждинин-Прокопьев", 24));
+        people.add(new Person("Артем", "Чуждинин Прокопьев", 24));
         people.add(new Person("Костя", "Булдинин-Прохопьев", 21));
         people.add(new Person("Татьяна", "Булкина", 41));
 
@@ -45,8 +44,8 @@ class ComparatorForPerson implements Comparator<Person> {
      */
     @Override
     public int compare(Person o1, Person o2) {
-        String[] wordsInSurname1 = o1.getSurname().split("-");
-        String[] wordsInSurname2 = o2.getSurname().split("-");
+        String[] wordsInSurname1 = o1.getSurname().split("\\p{Punct}|\\p{Space}");
+        String[] wordsInSurname2 = o2.getSurname().split("\\p{Punct}|\\p{Space}");
         if (wordsInSurname1.length > maxLenghtOfSurname
             && wordsInSurname2.length > maxLenghtOfSurname) {
             return Integer.compare(o1.getAge(), o2.getAge());
@@ -60,4 +59,3 @@ class ComparatorForPerson implements Comparator<Person> {
         }
     }
 }
-
