@@ -18,12 +18,18 @@ public class Main {
         people.add(new Person("Артем", "Чуждинин Прокопьев", 24));
         people.add(new Person("Костя", "Булдинин-Прохопьев", 21));
         people.add(new Person("Татьяна", "Булкина", 41));
+        people.add(new Person("Николай", "Пчелкин-Соболев", 16));
 
         Collections.sort(people, new ComparatorForPerson(2));
 
         for (Person person : people) {
             System.out.println(person);
         }
+        System.out.println();
+
+        people.removeIf(person -> person.getAge() < 18);
+
+        people.forEach(System.out::println);
     }
 }
 
