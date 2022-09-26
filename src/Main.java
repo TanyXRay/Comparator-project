@@ -24,10 +24,14 @@ public class Main {
             String[] wordsInSurname2 = o2.getSurname().split("\\p{Punct}|\\p{Space}");
             int maxLenghtOfSurname = 2;
             if (wordsInSurname1.length > maxLenghtOfSurname
-                && wordsInSurname2.length > maxLenghtOfSurname) return Integer.compare(o1.getAge(), o2.getAge());
-            if (wordsInSurname1.length > wordsInSurname2.length) return 1;
-            else if (wordsInSurname1.length < wordsInSurname2.length) return -1;
-            else return Integer.compare(o1.getAge(), o2.getAge());
+                && wordsInSurname2.length > maxLenghtOfSurname) {
+                return Integer.compare(o1.getAge(), o2.getAge());
+            }
+            if (wordsInSurname1.length > wordsInSurname2.length) {
+                return 1;
+            } else if (wordsInSurname1.length < wordsInSurname2.length) {
+                return -1;
+            } else return Integer.compare(o1.getAge(), o2.getAge());
         });
 
         people.forEach(System.out::println);
