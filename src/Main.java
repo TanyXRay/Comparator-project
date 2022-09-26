@@ -18,6 +18,7 @@ public class Main {
         people.add(new Person("Артем", "Чуждинин Прокопьев", 24));
         people.add(new Person("Костя", "Булдинин-Прохопьев", 21));
         people.add(new Person("Татьяна", "Булкина", 41));
+        people.add(new Person("Николай", "Пчелкин-Соболев", 16));
 
         Collections.sort(people, (o1, o2) -> {
             String[] wordsInSurname1 = o1.getSurname().split("\\p{Punct}|\\p{Space}");
@@ -33,6 +34,10 @@ public class Main {
                 return -1;
             } else return Integer.compare(o1.getAge(), o2.getAge());
         });
+
+        System.out.println();
+
+        people.removeIf(person -> person.getAge() < 18);
 
         people.forEach(System.out::println);
     }
